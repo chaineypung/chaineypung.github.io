@@ -8,24 +8,19 @@
   <style>
     :root {
       --ink: #1f2933;
-      --muted: #5f6f7f;
+      --muted: #637083;
       --light: #f6f8fb;
-      --line: #e0e7ef;
+      --line: #dfe7ef;
       --blue: #2364aa;
       --teal: #108c8c;
       --gold: #c9831d;
       --rose: #b64d72;
-      --max: 1060px;
+      --max: 1120px;
       --radius: 8px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -35,14 +30,8 @@
       line-height: 1.65;
     }
 
-    a {
-      color: var(--blue);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
     .container {
       width: min(var(--max), calc(100% - 36px));
@@ -50,7 +39,7 @@
     }
 
     header {
-      padding: 62px 0 34px;
+      padding: 58px 0 34px;
       text-align: center;
       border-bottom: 1px solid var(--line);
       background: #ffffff;
@@ -58,7 +47,7 @@
 
     h1 {
       margin: 0 auto 16px;
-      max-width: 920px;
+      max-width: 980px;
       font-size: clamp(34px, 5vw, 58px);
       line-height: 1.08;
       letter-spacing: 0;
@@ -66,7 +55,7 @@
     }
 
     .subtitle {
-      margin: 0 auto 22px;
+      margin: 0 auto 20px;
       max-width: 820px;
       color: var(--muted);
       font-size: clamp(18px, 2.2vw, 23px);
@@ -75,7 +64,7 @@
 
     .authors {
       margin: 20px auto 8px;
-      max-width: 880px;
+      max-width: 920px;
       color: var(--blue);
       font-size: 17px;
     }
@@ -118,16 +107,9 @@
       background: #111827;
     }
 
-    main {
-      padding-bottom: 56px;
-    }
-
     section {
-      padding: 42px 0;
-    }
-
-    section + section {
-      border-top: 1px solid var(--line);
+      padding: 44px 0;
+      border-bottom: 1px solid var(--line);
     }
 
     h2 {
@@ -139,7 +121,7 @@
 
     h3 {
       margin: 0 0 10px;
-      font-size: 20px;
+      font-size: 21px;
       line-height: 1.25;
     }
 
@@ -149,19 +131,22 @@
       font-size: 17px;
     }
 
-    .teaser {
-      padding-top: 34px;
+    .center-text {
+      max-width: 900px;
+      margin: 0 auto 22px;
+      text-align: center;
     }
 
-    .teaser-card {
+    .figure-card {
+      margin: 24px 0 0;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: #ffffff;
       overflow: hidden;
-      box-shadow: 0 14px 42px rgba(31, 41, 51, 0.08);
+      background: #ffffff;
+      box-shadow: 0 12px 38px rgba(31, 41, 51, 0.08);
     }
 
-    .teaser-card img {
+    .figure-card img {
       display: block;
       width: 100%;
       height: auto;
@@ -177,38 +162,52 @@
       text-align: center;
     }
 
-    .abstract {
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: justify;
-    }
-
-    .highlights {
+    .split {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 28px;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 28px;
+      align-items: center;
     }
 
-    .metric,
-    .module,
-    .result {
+    .notes {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .note,
+    .metric {
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: #ffffff;
+      padding: 20px;
+    }
+
+    .note {
+      border-top: 4px solid var(--teal);
+    }
+
+    .note:nth-child(2) { border-top-color: var(--gold); }
+    .note:nth-child(3) { border-top-color: var(--rose); }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin: 28px 0 8px;
     }
 
     .metric {
-      padding: 20px;
       text-align: center;
     }
 
     .metric strong {
       display: block;
+      margin-bottom: 8px;
       color: var(--blue);
       font-size: 34px;
       line-height: 1;
-      margin-bottom: 8px;
     }
 
     .metric span {
@@ -216,65 +215,64 @@
       font-size: 14px;
     }
 
-    .module-grid,
-    .result-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 24px;
-    }
-
-    .module,
-    .result {
-      padding: 22px;
-    }
-
-    .module {
-      border-top: 4px solid var(--teal);
-    }
-
-    .module:nth-child(2) {
-      border-top-color: var(--gold);
-    }
-
-    .module:nth-child(3) {
-      border-top-color: var(--rose);
-    }
-
-    .result {
-      border-top: 4px solid var(--blue);
-    }
-
-    .result:nth-child(2) {
-      border-top-color: var(--teal);
-    }
-
-    .result:nth-child(3) {
-      border-top-color: var(--gold);
-    }
-
-    .pipeline {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1px;
-      margin-top: 28px;
-      overflow: hidden;
+    .table-wrap {
+      margin-top: 22px;
+      overflow-x: auto;
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: var(--line);
-    }
-
-    .step {
-      padding: 18px;
       background: #ffffff;
     }
 
-    .step b {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--teal);
-      font-size: 13px;
-      text-transform: uppercase;
+    table {
+      width: 100%;
+      min-width: 980px;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    caption {
+      padding: 14px 16px;
+      text-align: left;
+      color: var(--ink);
+      font-weight: 800;
+      background: var(--light);
+      border-bottom: 1px solid var(--line);
+    }
+
+    th,
+    td {
+      padding: 9px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    th:first-child,
+    td:first-child {
+      text-align: left;
+    }
+
+    thead th {
+      color: var(--ink);
+      background: #fbfcfe;
+      font-weight: 800;
+    }
+
+    tbody tr.group td {
+      color: var(--ink);
+      background: #f0f5fa;
+      font-weight: 800;
+      text-align: left;
+    }
+
+    tbody tr.evita {
+      background: #eef6ff;
+      font-weight: 750;
+    }
+
+    .best {
+      color: #c92323;
+      font-weight: 900;
     }
 
     pre {
@@ -292,26 +290,17 @@
       padding: 28px 0;
       color: var(--muted);
       text-align: center;
-      border-top: 1px solid var(--line);
       background: var(--light);
       font-size: 14px;
     }
 
-    @media (max-width: 820px) {
-      header {
-        padding-top: 42px;
-      }
-
-      .highlights,
-      .module-grid,
-      .result-grid,
-      .pipeline {
-        grid-template-columns: 1fr;
-      }
-
-      .abstract {
-        text-align: left;
-      }
+    @media (max-width: 860px) {
+      header { padding-top: 40px; }
+      .split,
+      .notes,
+      .metrics { grid-template-columns: 1fr; }
+      .center-text { text-align: left; }
+      section { padding: 34px 0; }
     }
   </style>
 </head>
@@ -335,85 +324,158 @@
 
       <div class="buttons">
         <a class="button" href="https://github.com/chaineypung/Evita" target="_blank" rel="noreferrer">Code</a>
-        <a class="button" href="#method">Method</a>
+        <a class="button" href="#concept">Concept</a>
+        <a class="button" href="#architecture">Architecture</a>
         <a class="button" href="#results">Results</a>
-        <a class="button" href="#bibtex">BibTeX</a>
+        <a class="button" href="#tables">Tables</a>
       </div>
     </div>
   </header>
 
   <main>
-    <section class="teaser">
+    <section id="concept">
       <div class="container">
-        <figure class="teaser-card">
-          <img src="evita-assets/teaser.png" alt="Evita framework overview teaser">
-          <figcaption class="caption">Evita resolves RGB-Event misalignment, learns representation-invariant features, and uses a unified backbone for dense downstream parsing.</figcaption>
+        <h2>Concept</h2>
+        <p class="center-text">Evita starts from a simple observation: RGB frames and event streams are complementary, but they are not naturally aligned in space, time, or representation. The framework therefore addresses dataset alignment, event-format pretraining, and unified RGB-Event feature learning together.</p>
+        <figure class="figure-card">
+          <img src="evita-assets/fig1.png" alt="Evita concept overview">
+          <figcaption class="caption">Figure 1. N-ImageNetV2 improves RGB-Event alignment, stochastic RGB-E pretraining bridges event representations, and the unified backbone avoids the transferability gap of separated RGB backbones.</figcaption>
         </figure>
       </div>
     </section>
 
-    <section id="abstract">
+    <section id="architecture">
       <div class="container">
-        <h2>Abstract</h2>
-        <div class="abstract">
-          <p>Fusing standard RGB frames with asynchronous event streams is a promising route toward robust visual perception in degraded environments. Existing methods often rely on decoupled dual encoders, which increase computational cost, overlook geometric parallax, and suffer from cross-spectral aliasing between dense intensity grids and sparse event dynamics.</p>
-          <p>Evita introduces a unified RGB-Event backbone for downstream dense prediction. Instead of isolated streams, each encoder layer embeds cross-modal co-learning modules for geometric alignment, frequency-domain texture transfer, and transient global routing. Together with N-ImageNetV2 and stochastic event-representation mixing, Evita learns transferable features that accommodate diverse event formats during finetuning.</p>
-        </div>
+        <h2>Architecture</h2>
+        <p class="center-text">The Evita block embeds geometric, spectral, and routing operations inside the encoder itself. This makes RGB-Event interaction an intrinsic part of representation learning rather than a late-stage decoder operation.</p>
+        <figure class="figure-card">
+          <img src="evita-assets/fig3.png" alt="Evita architecture and block design">
+          <figcaption class="caption">Figure 2. The hierarchical Evita backbone integrates Geometric Parallax Rectification, Harmonic Spectral Resonance, and Transient Global Routing in every encoder stage.</figcaption>
+        </figure>
 
-        <div class="highlights" aria-label="Key metrics">
-          <div class="metric"><strong>59.57</strong><span>mIoU on DELIVER</span></div>
-          <div class="metric"><strong>80.12</strong><span>mIoU on DDD17</span></div>
-          <div class="metric"><strong>76.80</strong><span>mIoU on DSEC</span></div>
-          <div class="metric"><strong>44.3M</strong><span>parameters in Evita-L</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="method">
-      <div class="container">
-        <h2>Method</h2>
-        <p class="abstract">Evita targets the physical friction points of RGB-Event fusion: spatial mismatch, spectral heterogeneity, and event-driven long-range context. Its encoder blocks jointly optimize both modalities instead of postponing interaction to a late decoder.</p>
-
-        <div class="module-grid">
-          <article class="module">
-            <h3>Geometric Parallax Rectification</h3>
-            <p>An adaptive cross-modal deformable operator dynamically aligns event structures with RGB boundaries, correcting spatial offsets from asynchronous sensing.</p>
+        <div class="notes">
+          <article class="note">
+            <h3>Geometric Alignment</h3>
+            <p>Geometric Parallax Rectification predicts bounded offsets and masks to align event features with RGB structure.</p>
           </article>
-          <article class="module">
-            <h3>Harmonic Spectral Resonance</h3>
-            <p>Frequency-domain fusion injects event-driven high-frequency changes while preserving RGB phase structure, reducing noisy spatial aliasing.</p>
+          <article class="note">
+            <h3>Spectral Transfer</h3>
+            <p>Harmonic Spectral Resonance moves event-driven high-frequency cues through the frequency domain while preserving RGB phase information.</p>
           </article>
-          <article class="module">
-            <h3>Transient Global Routing</h3>
-            <p>Event features act as dynamic queries that route global photometric context from RGB, improving semantic consistency in difficult scenes.</p>
+          <article class="note">
+            <h3>Event-Guided Routing</h3>
+            <p>Transient Global Routing uses event features as dynamic queries to gather global photometric context from the RGB stream.</p>
           </article>
-        </div>
-
-        <div class="pipeline" aria-label="Evita workflow">
-          <div class="step"><b>Input</b><p>RGB frames and asynchronous event streams enter lightweight modality stems.</p></div>
-          <div class="step"><b>Align</b><p>Geometric rectification estimates local offsets and samples aligned event features.</p></div>
-          <div class="step"><b>Fuse</b><p>Spectral resonance combines texture, edges, and transient changes with less noise.</p></div>
-          <div class="step"><b>Parse</b><p>Unified features are decoded into dense scene understanding outputs.</p></div>
         </div>
       </div>
     </section>
 
     <section id="results">
       <div class="container">
-        <h2>Experiments</h2>
-        <div class="result-grid">
-          <article class="result">
-            <h3>Unified and efficient</h3>
-            <p>A single RGB-Event backbone reduces duplicated computation compared with conventional dual-stream architectures while preserving dense cross-modal interaction.</p>
-          </article>
-          <article class="result">
-            <h3>N-ImageNetV2 pretraining</h3>
-            <p>Strictly aligned RGB-Event pairs and stochastic event-representation mixing help the model generalize across downstream event formats.</p>
-          </article>
-          <article class="result">
-            <h3>Robust to misalignment</h3>
-            <p>Under simulated DDD17 event offsets, Evita-L drops by only about 0.18 mIoU at the extreme shift, demonstrating strong geometric robustness.</p>
-          </article>
+        <h2>Qualitative and Efficiency Results</h2>
+        <div class="split">
+          <div>
+            <p>Across night, fog, cloudy, rainy, and sunny scenes, Evita produces cleaner dense parsing around thin structures, road boundaries, vehicles, and low-visibility regions. The qualitative comparison highlights that event cues are most useful when RGB alone becomes unreliable.</p>
+            <p>The accuracy-FLOPs curve further shows why a unified backbone matters: Evita reaches strong mIoU while avoiding the redundant computation of large dual-stream pipelines.</p>
+          </div>
+          <div class="metrics">
+            <div class="metric"><strong>59.57</strong><span>mIoU on DELIVER</span></div>
+            <div class="metric"><strong>80.12</strong><span>mIoU on DDD17</span></div>
+            <div class="metric"><strong>76.80</strong><span>mIoU on DSEC</span></div>
+            <div class="metric"><strong>44.3M</strong><span>parameters in Evita-L</span></div>
+          </div>
+        </div>
+
+        <figure class="figure-card">
+          <img src="evita-assets/fig4.png" alt="Qualitative comparison on adverse driving scenes">
+          <figcaption class="caption">Figure 3. Qualitative comparison under diverse adverse conditions. Evita preserves semantic structure more consistently than competing RGB-Event fusion methods.</figcaption>
+        </figure>
+
+        <figure class="figure-card">
+          <img src="evita-assets/accuracy-flops.png" alt="Accuracy versus FLOPs comparison">
+          <figcaption class="caption">Figure 4. Accuracy versus computational cost on DELIVER. Evita improves the accuracy-efficiency tradeoff for dense RGB-Event parsing.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="tables">
+      <div class="container">
+        <h2>Quantitative Comparisons</h2>
+        <p class="center-text">The tables summarize the reported results while omitting venue labels from the webpage. Evita variants are highlighted in blue, and the best scores are marked in red.</p>
+
+        <div class="table-wrap">
+          <table>
+            <caption>DELIVER dataset</caption>
+            <thead>
+              <tr><th>Method</th><th>Backbone</th><th>Representation</th><th>Input size</th><th>Params (M)</th><th>FLOPs</th><th>mIoU (%)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>HRFuser</td><td>HRFormer-T</td><td>EventBinary</td><td>1024x1024</td><td>49.9</td><td>487.5</td><td>42.22</td></tr>
+              <tr><td>TokenFusion</td><td>MiT-B2</td><td>EventBinary</td><td>1024x1024</td><td>26.0</td><td>188.05</td><td>45.63</td></tr>
+              <tr><td>MultiMAE</td><td>ViT-B</td><td>EventBinary</td><td>1024x1024</td><td>100.3</td><td>1054.3</td><td>57.95</td></tr>
+              <tr><td>Omnivore</td><td>Swin-B</td><td>EventBinary</td><td>1024x1024</td><td>86.7</td><td>335.49</td><td>56.03</td></tr>
+              <tr><td>CMX</td><td>MiT-B2</td><td>EventBinary</td><td>1024x1024</td><td>66.6</td><td>228.8</td><td>56.52</td></tr>
+              <tr><td>CMNeXt</td><td>MiT-B2</td><td>EventBinary</td><td>1024x1024</td><td>58.7</td><td>233.5</td><td>57.48</td></tr>
+              <tr><td>CMNeXt</td><td>MiT-B4</td><td>EventBinary</td><td>1024x1024</td><td>116.5</td><td>449.6</td><td>58.87</td></tr>
+              <tr><td>MambaSeg</td><td>VMamba-T</td><td>EventBinary</td><td>1024x1024</td><td>25.5</td><td>232.45</td><td>56.48</td></tr>
+              <tr><td>OmniSegmentor</td><td>DFormer-L</td><td>EventBinary</td><td>1024x1024</td><td>39.0</td><td>224.0</td><td>58.63</td></tr>
+              <tr><td>StitchFusion</td><td>MiT-B4</td><td>EventBinary</td><td>1024x1024</td><td>65.3</td><td>448.5</td><td>58.75</td></tr>
+              <tr class="evita"><td>Evita-P</td><td>Ours-P</td><td>EventBinary</td><td>1024x1024</td><td>1.3</td><td>5.2</td><td>48.21</td></tr>
+              <tr class="evita"><td>Evita-N</td><td>Ours-N</td><td>EventBinary</td><td>1024x1024</td><td>4.9</td><td>16.2</td><td>52.91</td></tr>
+              <tr class="evita"><td>Evita-T</td><td>Ours-T</td><td>EventBinary</td><td>1024x1024</td><td>6.5</td><td>29.8</td><td>55.01</td></tr>
+              <tr class="evita"><td>Evita-S</td><td>Ours-S</td><td>EventBinary</td><td>1024x1024</td><td>21.9</td><td>78.2</td><td>56.79</td></tr>
+              <tr class="evita"><td>Evita-B</td><td>Ours-B</td><td>EventBinary</td><td>1024x1024</td><td>34.3</td><td>143.7</td><td>58.02</td></tr>
+              <tr class="evita"><td>Evita-L</td><td>Ours-L</td><td>EventBinary</td><td>1024x1024</td><td>44.3</td><td>232.1</td><td class="best">59.57</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <caption>DDD17 and DSEC datasets</caption>
+            <thead>
+              <tr><th>Method</th><th>Backbone</th><th>Params</th><th>Modality</th><th>Rep.</th><th>DDD17 FLOPs</th><th>DDD17 mIoU</th><th>DDD17 Acc</th><th>DSEC FLOPs</th><th>DSEC mIoU</th><th>DSEC Acc</th></tr>
+            </thead>
+            <tbody>
+              <tr class="group"><td colspan="11">Single Modal Method</td></tr>
+              <tr><td>SegFormer</td><td>MiT-B2</td><td>27.5</td><td>Image</td><td>RGB</td><td>16.0</td><td>71.05</td><td>95.73</td><td>67.6</td><td>71.99</td><td>94.97</td></tr>
+              <tr><td>SegNeXt</td><td>SegNeXt-B</td><td>27.6</td><td>Image</td><td>RGB</td><td>10.2</td><td>71.46</td><td>95.97</td><td>40.4</td><td>71.55</td><td>94.89</td></tr>
+              <tr><td>EV-SegNet</td><td>Xception</td><td>34.6</td><td>Event</td><td>6-Channel</td><td>8.0</td><td>54.81</td><td>89.76</td><td>30.6</td><td>51.76</td><td>88.61</td></tr>
+              <tr><td>ESS</td><td>E2VID</td><td>47.2</td><td>Event</td><td>Voxel Grid</td><td>51.8</td><td>61.37</td><td>91.08</td><td>202.6</td><td>51.57</td><td>89.25</td></tr>
+              <tr class="group"><td colspan="11">RGB-X Method</td></tr>
+              <tr><td>TokenFusion</td><td>MiT-B2</td><td>28.6</td><td>Image-Event</td><td>Voxel Grid</td><td>32.6</td><td>67.96</td><td>94.77</td><td>137.4</td><td>70.67</td><td>95.20</td></tr>
+              <tr><td>MultiMAE</td><td>ViT-B</td><td>89.7</td><td>Image-Event</td><td>Voxel Grid</td><td>56.1</td><td>63.31</td><td>93.33</td><td>291.5</td><td>67.11</td><td>94.35</td></tr>
+              <tr><td>HRFuser</td><td>HRFormer-T</td><td>12.8</td><td>Image-Event</td><td>Voxel Grid</td><td>17.6</td><td>73.17</td><td>95.41</td><td>70.0</td><td>59.66</td><td>92.76</td></tr>
+              <tr><td>CMX</td><td>MiT-B2</td><td>66.6</td><td>Image-Event</td><td>Voxel Grid</td><td>15.7</td><td>77.64</td><td>96.46</td><td>62.1</td><td>73.88</td><td>95.51</td></tr>
+              <tr><td>CMX</td><td>MiT-B3</td><td>106.3</td><td>Image-Event</td><td>Voxel Grid</td><td>23.8</td><td>76.83</td><td>96.50</td><td>94.1</td><td>73.24</td><td>95.40</td></tr>
+              <tr><td>CMX</td><td>MiT-B4</td><td>140.0</td><td>Image-Event</td><td>Voxel Grid</td><td>31.5</td><td>77.00</td><td>96.36</td><td>124.8</td><td>74.06</td><td>95.54</td></tr>
+              <tr><td>CMNeXt</td><td>MiT-B2</td><td>58.7</td><td>Image-Event</td><td>Voxel Grid</td><td>16.0</td><td>76.86</td><td>96.47</td><td>63.4</td><td>73.42</td><td>95.48</td></tr>
+              <tr><td>CMNeXt</td><td>MiT-B4</td><td>116.6</td><td>Image-Event</td><td>Voxel Grid</td><td>31.0</td><td>77.70</td><td>96.48</td><td>122.3</td><td>73.84</td><td>95.49</td></tr>
+              <tr><td>CMNeXt</td><td>MiT-B5</td><td>149.0</td><td>Image-Event</td><td>Voxel Grid</td><td>37.8</td><td>77.09</td><td>96.47</td><td>149.3</td><td>74.22</td><td>95.59</td></tr>
+              <tr><td>GeminiFusion</td><td>MiT-B2</td><td>31.8</td><td>Image-Event</td><td>Voxel Grid</td><td>33.6</td><td>71.15</td><td>96.15</td><td>141.4</td><td>71.45</td><td>95.31</td></tr>
+              <tr><td>StitchFusion</td><td>MiT-B2</td><td>30.0</td><td>Image-Event</td><td>Voxel Grid</td><td>20.8</td><td>76.83</td><td>96.30</td><td>89.7</td><td>73.63</td><td>95.43</td></tr>
+              <tr><td>StitchFusion</td><td>MiT-B3</td><td>47.5</td><td>Image-Event</td><td>Voxel Grid</td><td>28.2</td><td>76.58</td><td>96.54</td><td>112.1</td><td>74.47</td><td>95.57</td></tr>
+              <tr><td>StitchFusion</td><td>MiT-B4</td><td>64.4</td><td>Image-Event</td><td>Voxel Grid</td><td>36.0</td><td>77.41</td><td>96.50</td><td>143.1</td><td>73.69</td><td>95.44</td></tr>
+              <tr><td>OmniSegmentor</td><td>DFormer-L</td><td>40.9</td><td>Image-Event</td><td>Voxel Grid</td><td>25.3</td><td>79.34</td><td>96.54</td><td>100.7</td><td>75.31</td><td>95.74</td></tr>
+              <tr class="group"><td colspan="11">RGB-E Method</td></tr>
+              <tr><td>ESS</td><td>E2VID</td><td>52.7</td><td>Image-Event</td><td>Voxel Grid</td><td>20.0</td><td>60.43</td><td>90.37</td><td>77.4</td><td>53.29</td><td>89.37</td></tr>
+              <tr><td>EDCNet</td><td>ResNet-18</td><td>23.1</td><td>Image-Event</td><td>Voxel Grid</td><td>21.3</td><td>61.99</td><td>93.80</td><td>72.5</td><td>56.75</td><td>92.39</td></tr>
+              <tr><td>HALSIE</td><td>Customed</td><td>5.0</td><td>Image-Event</td><td>Voxel Grid</td><td>4.9</td><td>60.66</td><td>92.50</td><td>37.7</td><td>52.43</td><td>89.01</td></tr>
+              <tr><td>SE-Adapter</td><td>ViT-B</td><td>88.1</td><td>Image-Event</td><td>MSP</td><td>62.3</td><td>69.06</td><td>95.32</td><td>267.4</td><td>69.77</td><td>93.58</td></tr>
+              <tr><td>EISNet</td><td>MiT-B2</td><td>34.4</td><td>Image-Event</td><td>AET</td><td>16.8</td><td>75.03</td><td>96.04</td><td>67.3</td><td>73.07</td><td>95.12</td></tr>
+              <tr><td>EISNet</td><td>MiT-B3</td><td>95.0</td><td>Image-Event</td><td>AET</td><td>29.3</td><td>76.14</td><td>96.14</td><td>116.6</td><td>73.33</td><td>95.07</td></tr>
+              <tr><td>EISNet</td><td>MiT-B4</td><td>128.5</td><td>Image-Event</td><td>AET</td><td>37.0</td><td>76.06</td><td>95.89</td><td>147.2</td><td>72.56</td><td>95.05</td></tr>
+              <tr><td>Hybrid-Seg</td><td>ERViT-T</td><td>2.1</td><td>Image-Event</td><td>Voxel Grid</td><td>4.0</td><td>67.31</td><td>95.07</td><td>14.4</td><td>66.57</td><td>94.27</td></tr>
+              <tr><td>ESC</td><td>MiT-B2</td><td>56.9</td><td>Image-Event</td><td>Voxel Grid</td><td>18.3</td><td>76.81</td><td>96.35</td><td>95.1</td><td>73.55</td><td>95.49</td></tr>
+              <tr><td>MambaSeg</td><td>VMamba-T</td><td>25.4</td><td>Image-Event</td><td>Voxel Grid</td><td>33.8</td><td>77.56</td><td>96.33</td><td>159.5</td><td>75.10</td><td>95.71</td></tr>
+              <tr class="evita"><td>Evita-Pico</td><td>Ours-P</td><td>1.3</td><td>Image-Event</td><td>Voxel Grid</td><td>0.6</td><td>71.26</td><td>95.78</td><td>2.6</td><td>65.55</td><td>94.12</td></tr>
+              <tr class="evita"><td>Evita-Nano</td><td>Ours-N</td><td>4.9</td><td>Image-Event</td><td>Voxel Grid</td><td>2.3</td><td>74.84</td><td>96.17</td><td>9.2</td><td>70.09</td><td>94.99</td></tr>
+              <tr class="evita"><td>Evita-Tiny</td><td>Ours-T</td><td>6.5</td><td>Image-Event</td><td>Voxel Grid</td><td>3.2</td><td>77.04</td><td>96.45</td><td>12.9</td><td>73.90</td><td>95.55</td></tr>
+              <tr class="evita"><td>Evita-Small</td><td>Ours-S</td><td>21.9</td><td>Image-Event</td><td>Voxel Grid</td><td>10.3</td><td>78.56</td><td>96.72</td><td>40.9</td><td>75.07</td><td>95.70</td></tr>
+              <tr class="evita"><td>Evita-Base</td><td>Ours-B</td><td>34.3</td><td>Image-Event</td><td>Voxel Grid</td><td>14.7</td><td>79.11</td><td class="best">96.73</td><td>58.5</td><td>76.08</td><td>95.86</td></tr>
+              <tr class="evita"><td>Evita-Large</td><td>Ours-L</td><td>44.3</td><td>Image-Event</td><td>Voxel Grid</td><td>20.8</td><td class="best">80.12</td><td>96.68</td><td>82.7</td><td class="best">76.80</td><td class="best">95.97</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
@@ -421,10 +483,10 @@
     <section id="bibtex">
       <div class="container">
         <h2>BibTeX</h2>
-        <pre><code>@article{peng2026evita,
-  title   = {Weaving Light and Time: Unified Harmonic-Geometric Representation Learning for Dense RGB-Event Parsing},
-  author  = {Peng, Chenxu and Zhou, Chongtian and Liu, Dicheng and Yin, Bowen and Dai, Yimian and Liu, Xialei and Cheng, Ming-Ming and Li, Xiang},
-  year    = {2026}
+        <pre><code>@misc{peng2026evita,
+  title  = {Weaving Light and Time: Unified Harmonic-Geometric Representation Learning for Dense RGB-Event Parsing},
+  author = {Peng, Chenxu and Zhou, Chongtian and Liu, Dicheng and Yin, Bowen and Dai, Yimian and Liu, Xialei and Cheng, Ming-Ming and Li, Xiang},
+  year   = {2026}
 }</code></pre>
       </div>
     </section>
