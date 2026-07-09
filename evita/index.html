@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Evita is a unified RGB-Event backbone for dense parsing, designed for robust perception under motion, low light, and adverse weather.">
+  <title>Evita | Unified RGB-Event Dense Parsing</title>
+  <style>
+    :root {
+      --ink: #111827;
+      --soft-ink: #263241;
+      --muted: #647386;
+      --line: #dce4ec;
+      --paper: #f5f8fb;
+      --white: #ffffff;
+      --cyan: #158a94;
+      --blue: #315fbc;
+      --gold: #c88418;
+      --plum: #aa4c72;
+      --green: #327f55;
+      --shadow: 0 22px 70px rgba(17, 24, 39, 0.16);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--white);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.58;
+      text-rendering: optimizeLegibility;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .hero {
+      min-height: 82vh;
+      position: relative;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      color: var(--white);
+      background:
+        linear-gradient(90deg, rgba(8, 14, 23, 0.92), rgba(8, 14, 23, 0.67) 42%, rgba(8, 14, 23, 0.14)),
+        url("evita-assets/paper-page1.png") center 16% / cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 32%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0), var(--white));
+      pointer-events: none;
+    }
+
+    .nav {
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px clamp(20px, 5vw, 76px);
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+    }
+
+    .brand::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #8ee8e7;
+      box-shadow: 0 0 0 5px rgba(142, 232, 231, 0.18);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      color: rgba(255, 255, 255, 0.84);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 118px 0 110px;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .kicker::before {
+      content: "";
+      width: 42px;
+      height: 2px;
+      background: #8ee8e7;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 880px;
+      font-size: clamp(58px, 9vw, 128px);
+      line-height: 0.9;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin: 26px 0 34px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: clamp(18px, 2vw, 24px);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.96);
+      color: var(--ink);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .button.secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      backdrop-filter: blur(12px);
+    }
+
+    .button.dark {
+      border-color: var(--ink);
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    section {
+      padding: 86px clamp(20px, 5vw, 76px);
+    }
+
+    .wrap {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+    }
+
+    .stats-section {
+      padding-top: 20px;
+      background: var(--white);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .stat,
+    .module,
+    .result,
+    .paper-card,
+    .flow {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+    }
+
+    .stat {
+      padding: 24px;
+      box-shadow: 0 12px 34px rgba(17, 24, 39, 0.06);
+    }
+
+    .stat strong {
+      display: block;
+      margin-bottom: 9px;
+      color: var(--blue);
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .intro {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(320px, 0.72fr);
+      gap: clamp(32px, 6vw, 76px);
+      align-items: center;
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      max-width: 760px;
+      color: var(--ink);
+      font-size: clamp(34px, 4vw, 58px);
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .paper-card {
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .paper-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .caption {
+      margin: 0;
+      padding: 16px 18px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .soft {
+      background: var(--paper);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 32px;
+      margin-bottom: 30px;
+    }
+
+    .section-head p {
+      max-width: 500px;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .modules {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .module {
+      position: relative;
+      min-height: 270px;
+      padding: 30px;
+      overflow: hidden;
+    }
+
+    .module::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 4px;
+      background: var(--cyan);
+    }
+
+    .module:nth-child(2)::after {
+      background: var(--gold);
+    }
+
+    .module:nth-child(3)::after {
+      background: var(--plum);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      margin-bottom: 24px;
+      border-radius: 50%;
+      color: var(--white);
+      font-weight: 900;
+      background: var(--cyan);
+    }
+
+    .module:nth-child(2) .badge {
+      background: var(--gold);
+    }
+
+    .module:nth-child(3) .badge {
+      background: var(--plum);
+    }
+
+    .module h3,
+    .result h3 {
+      margin: 0 0 12px;
+      color: var(--soft-ink);
+      font-size: 22px;
+      line-height: 1.22;
+    }
+
+    .module p,
+    .result p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .results {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .result {
+      padding: 28px;
+      border-top: 4px solid var(--blue);
+    }
+
+    .result:nth-child(2) {
+      border-top-color: var(--green);
+    }
+
+    .result:nth-child(3) {
+      border-top-color: var(--gold);
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      overflow: hidden;
+      margin-top: 34px;
+      background: var(--line);
+    }
+
+    .step {
+      min-height: 156px;
+      padding: 25px;
+      background: var(--white);
+    }
+
+    .step b {
+      color: var(--cyan);
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    .step p {
+      margin: 9px 0 0;
+      color: var(--muted);
+    }
+
+    .publish {
+      background: #111b26;
+      color: var(--white);
+    }
+
+    .publish .wrap {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .publish h2 {
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+
+    .publish p {
+      max-width: 760px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 18px;
+    }
+
+    .footer {
+      padding: 28px clamp(20px, 5vw, 76px);
+      color: var(--muted);
+      font-size: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 880px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: 76vh;
+        background-position: 56% 0;
+      }
+
+      .hero-inner {
+        padding-bottom: 82px;
+      }
+
+      .stats,
+      .intro,
+      .modules,
+      .results,
+      .flow,
+      .publish .wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head p {
+        margin-top: 12px;
+      }
+
+      section {
+        padding-top: 64px;
+        padding-bottom: 64px;
+      }
+
+      .publish .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="#">Evita</a>
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#method">Method</a>
+        <a href="#results">Results</a>
+      </div>
+    </nav>
+
+    <div class="hero-inner">
+      <div class="kicker">AAAI 2026 · RGB-Event Dense Parsing</div>
+      <h1>Evita</h1>
+      <p class="subtitle">A unified RGB-Event backbone that weaves photometric detail and microsecond event dynamics into one efficient representation for dense scene understanding.</p>
+      <div class="actions">
+        <a class="button" href="https://github.com/chaineypung/Evita" target="_blank" rel="noreferrer">View Code</a>
+        <a class="button secondary" href="#results">Explore Results</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="stats-section" aria-label="Key metrics">
+      <div class="wrap stats">
+        <div class="stat"><strong>59.57</strong><span>mIoU on DELIVER, setting a new state of the art.</span></div>
+        <div class="stat"><strong>80.12</strong><span>mIoU on DDD17 for robust driving-scene parsing.</span></div>
+        <div class="stat"><strong>76.80</strong><span>mIoU on DSEC with a strong accuracy-efficiency balance.</span></div>
+        <div class="stat"><strong>44.3M</strong><span>parameters in Evita-L, avoiding dual-backbone redundancy.</span></div>
+      </div>
+    </section>
+
+    <section id="overview">
+      <div class="wrap intro">
+        <div>
+          <h2>One backbone for light, motion, and time.</h2>
+          <p class="lead">RGB cameras provide dense texture but degrade under motion blur, low light, and extreme illumination. Event cameras capture brightness changes with microsecond latency, yet their sparse signals lack static appearance. Evita brings both modalities into a single dense-prediction backbone, replacing late dual-stream fusion with layer-by-layer cross-modal co-learning.</p>
+        </div>
+        <figure class="paper-card" aria-label="Paper preview">
+          <img src="evita-assets/paper-page1.png" alt="Preview of the Evita paper first page">
+          <figcaption class="caption">Paper: “Weaving Light and Time: Unified Harmonic-Geometric Representation Learning for Dense RGB-Event Parsing”.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="soft" id="method">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Designed around the real friction of fusion.</h2>
+          <p>Evita does not merely concatenate RGB and event inputs. Each encoder layer addresses alignment, spectral transfer, and long-range routing explicitly.</p>
+        </div>
+        <div class="modules">
+          <article class="module">
+            <div class="badge">G</div>
+            <h3>Geometric Parallax Rectification</h3>
+            <p>An adaptive cross-modal deformable operator aligns event structures with RGB boundaries, correcting spatial offsets caused by asynchronous sensing.</p>
+          </article>
+          <article class="module">
+            <div class="badge">H</div>
+            <h3>Harmonic Spectral Resonance</h3>
+            <p>Frequency-domain fusion injects event-driven high-frequency changes while preserving RGB phase structure, reducing noisy spatial aliasing.</p>
+          </article>
+          <article class="module">
+            <div class="badge">T</div>
+            <h3>Transient Global Routing</h3>
+            <p>Event features serve as dynamic queries that route global photometric context from RGB, improving semantic consistency in challenging scenes.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="results">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>High accuracy without sacrificing deployability.</h2>
+          <p>Across DELIVER, DDD17, and DSEC, Evita shows strong segmentation accuracy, efficient inference, and resilience to spatial misalignment.</p>
+        </div>
+        <div class="results">
+          <article class="result">
+            <h3>Unified and efficient</h3>
+            <p>A single RGB-Event backbone reduces the duplicated computation of conventional dual-stream approaches while keeping cross-modal interaction early and dense.</p>
+          </article>
+          <article class="result">
+            <h3>N-ImageNetV2 pretraining</h3>
+            <p>The paper introduces strictly aligned RGB-Event pairs and stochastic event-representation mixing, allowing the model to generalize across event formats.</p>
+          </article>
+          <article class="result">
+            <h3>Robust to misalignment</h3>
+            <p>Under simulated DDD17 event offsets, Evita-L drops by only about 0.18 mIoU at the extreme shift, showing strong geometric robustness.</p>
+          </article>
+        </div>
+
+        <div class="flow" aria-label="Evita workflow">
+          <div class="step"><b>01 Input</b><p>RGB frames and asynchronous event streams enter lightweight modality stems.</p></div>
+          <div class="step"><b>02 Align</b><p>Geometric rectification estimates local offsets and samples aligned event features.</p></div>
+          <div class="step"><b>03 Fuse</b><p>Spectral resonance combines texture, edges, and transient changes with less noise.</p></div>
+          <div class="step"><b>04 Parse</b><p>Unified features are decoded into dense, stable scene understanding outputs.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="publish">
+      <div class="wrap">
+        <div>
+          <h2>Built for real-world perception.</h2>
+          <p>When illumination, weather, speed, and sensor timing are imperfect, Evita offers a cleaner path toward robust multimodal perception for autonomous driving, robotics, and edge vision systems.</p>
+        </div>
+        <a class="button" href="https://github.com/chaineypung/Evita" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">Promotional webpage based on “Weaving Light and Time: Unified Harmonic-Geometric Representation Learning for Dense RGB-Event Parsing”.</div>
+  </footer>
+</body>
+</html>
