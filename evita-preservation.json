@@ -1,0 +1,68 @@
+{
+  "source_commit": "736d6a3273c11e0b71e366fc0fb26742b6e4836f",
+  "files": [
+    {
+      "path": "evita/.nojekyll",
+      "expected_git_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "actual_git_blob": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+      "bytes": 1,
+      "match": true
+    },
+    {
+      "path": "evita/README.md",
+      "expected_git_blob": "b36022607d016fd12fb5c859b12f41965ec3ec91",
+      "actual_git_blob": "b36022607d016fd12fb5c859b12f41965ec3ec91",
+      "bytes": 842,
+      "match": true
+    },
+    {
+      "path": "evita/evita-assets/accuracy-flops.png",
+      "expected_git_blob": "efc3788c1cbb65e70bc29f4708f72dbbc06d09ca",
+      "actual_git_blob": "efc3788c1cbb65e70bc29f4708f72dbbc06d09ca",
+      "bytes": 167745,
+      "match": true
+    },
+    {
+      "path": "evita/evita-assets/fig1.png",
+      "expected_git_blob": "7a036c128adc9bda58de06b7fb018a534b2877a9",
+      "actual_git_blob": "7a036c128adc9bda58de06b7fb018a534b2877a9",
+      "bytes": 1024735,
+      "match": true
+    },
+    {
+      "path": "evita/evita-assets/fig3.png",
+      "expected_git_blob": "0b7bd5e50c8b106102d459badf02d914b5be53b5",
+      "actual_git_blob": "0b7bd5e50c8b106102d459badf02d914b5be53b5",
+      "bytes": 477661,
+      "match": true
+    },
+    {
+      "path": "evita/evita-assets/fig4.png",
+      "expected_git_blob": "42bacbc308dda120bc0d2c4eed7800620ba2483d",
+      "actual_git_blob": "42bacbc308dda120bc0d2c4eed7800620ba2483d",
+      "bytes": 1695920,
+      "match": true
+    },
+    {
+      "path": "evita/evita-assets/paper-page1.png",
+      "expected_git_blob": "02e1de6165a9bff929209e6bd3931438d08276f8",
+      "actual_git_blob": "02e1de6165a9bff929209e6bd3931438d08276f8",
+      "bytes": 463396,
+      "match": true
+    },
+    {
+      "path": "evita/evita-assets/teaser.png",
+      "expected_git_blob": "d1a07a707627b513bf947d8fecfa8d62a186bfdb",
+      "actual_git_blob": "d1a07a707627b513bf947d8fecfa8d62a186bfdb",
+      "bytes": 170174,
+      "match": true
+    },
+    {
+      "path": "evita/index.html",
+      "expected_git_blob": "5ec98d3d98228395ebae088e390f49b5471dd0f4",
+      "actual_git_blob": "5ec98d3d98228395ebae088e390f49b5471dd0f4",
+      "bytes": 22362,
+      "match": true
+    }
+  ]
+}

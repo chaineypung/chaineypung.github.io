@@ -1,0 +1,80 @@
+{
+  "note": "Owner-requested editorial dates. These entries originally had only a year or month. Verify before treating as historical day-level evidence.",
+  "entries": [
+    {
+      "display_date": "2026.02.27",
+      "original_precision": "year",
+      "entry": "<span class=\"news-rank\">Silver Medal</span> in Kaggle Vesuvius Challenge – Surface Detection."
+    },
+    {
+      "display_date": "2026.01.22",
+      "original_precision": "year",
+      "entry": "<span class=\"news-rank\">Silver Medal</span> in Kaggle PhysioNet – Digitization of ECG Images."
+    },
+    {
+      "display_date": "2026.04.15",
+      "original_precision": "year",
+      "entry": "<span class=\"news-rank\">3rd Place</span> in Tencent Games Algorithm Competition."
+    },
+    {
+      "display_date": "2025.02.24",
+      "original_precision": "year",
+      "entry": "<a href=\"https://doi.org/10.1109/JSTARS.2025.3545014\">Beyond Full Labels</a> was published in <strong>IEEE JSTARS</strong>."
+    },
+    {
+      "display_date": "2025.10.14",
+      "original_precision": "year",
+      "entry": "<span class=\"news-rank\">Silver Medal</span> in Kaggle RSNA Intracranial Aneurysm Detection."
+    },
+    {
+      "display_date": "2025.10.11",
+      "original_precision": "year",
+      "entry": "<span class=\"award-text\">1st &amp; 2nd</span> in The 5th Jittor Artificial Intelligence Challenge."
+    },
+    {
+      "display_date": "2025.01.14",
+      "original_precision": "year",
+      "entry": "<span class=\"award-text\">First Prize</span> in Chang Guang Satellite High-Resolution Road Extraction."
+    },
+    {
+      "display_date": "2024.10.20",
+      "original_precision": "year",
+      "entry": "<span class=\"award-text\">1st Place</span> in PRCV Wide-Area Infrared Small Target Detection."
+    },
+    {
+      "display_date": "2024.12.01",
+      "original_precision": "year",
+      "entry": "<span class=\"award-text\">1st Place</span> in ICPR Weakly Supervised Infrared Small Target Detection."
+    },
+    {
+      "display_date": "2024.12.01",
+      "original_precision": "year",
+      "entry": "<span class=\"award-text\">1st Place</span> in ICPR Lightweight Infrared Small Target Detection."
+    },
+    {
+      "display_date": "2024.06.03",
+      "original_precision": "year",
+      "entry": "<span class=\"award-text\">Gold Medal</span> in Kaggle Image Matching Challenge."
+    },
+    {
+      "display_date": "2024.10.08",
+      "original_precision": "year",
+      "entry": "<span class=\"award-text\">Gold Medal</span> in Kaggle RSNA Lumbar Spine Degenerative Classification."
+    },
+    {
+      "display_date": "2024.04.08",
+      "original_precision": "year",
+      "entry": "<span class=\"news-rank\">Silver Medal</span> in Kaggle HMS – Harmful Brain Activity Classification."
+    },
+    {
+      "display_date": "2024.02.08",
+      "original_precision": "year",
+      "entry": "<span class=\"news-rank\">Silver Medal</span> in Kaggle SenNet + HOA Human Vasculature Segmentation."
+    },
+    {
+      "display_date": "2024.09.20",
+      "original_precision": "year",
+      "entry": "<span class=\"news-rank\">3rd Place</span> in China Aerospace AI Challenge – Remote Sensing Target Recognition."
+    }
+  ]
+}

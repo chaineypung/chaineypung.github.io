@@ -1,0 +1,56 @@
+{
+  "retrieved_on": "2026-10-16",
+  "purpose": "Author-provided public repository assets for the author's academic homepage",
+  "assets": [
+    {
+      "file": "assets/images/profile.jpg",
+      "source": "https://avatars.githubusercontent.com/u/67492184?v=4",
+      "note": "Public GitHub profile portrait of chaineypung."
+    },
+    {
+      "file": "assets/images/evita.png",
+      "paper": "Evita",
+      "repository": "https://github.com/chaineypung/Evita",
+      "original_source": "https://raw.githubusercontent.com/chaineypung/Evita/main/figs/fig1.png",
+      "retrieved_from": "https://cdn.jsdelivr.net/gh/chaineypung/Evita@main/figs/fig1.png",
+      "width": 3999,
+      "height": 1383,
+      "verification": "Complete PNG IEND; visually inspected original figure; Pillow decode verified",
+      "bytes": 1614442,
+      "delivery_note": "Resized for use as a web thumbnail; original source identified above."
+    },
+    {
+      "file": "assets/images/roadgie.png",
+      "paper": "RoadGIE",
+      "repository": "https://github.com/chaineypung/RoadGIE",
+      "original_source": "https://raw.githubusercontent.com/chaineypung/RoadGIE/main/assets/dataset.png",
+      "retrieved_from": "https://cdn.jsdelivr.net/gh/chaineypung/RoadGIE@main/assets/dataset.png",
+      "width": 3084,
+      "height": 1195,
+      "verification": "Complete PNG IEND; visually inspected WorldRoadSeg-360K dataset figure; Pillow decode verified",
+      "bytes": 1667783,
+      "delivery_note": "Resized for use as a web thumbnail; original source identified above."
+    },
+    {
+      "file": "assets/images/tracker.png",
+      "paper": "A Simple Detector with Frame Dynamics is a Strong Tracker",
+      "repository": "https://github.com/facias914/A-Simple-Detector-is-a-Strong-Tracker",
+      "original_source": "https://raw.githubusercontent.com/facias914/A-Simple-Detector-is-a-Strong-Tracker/main/assets/pipeline.png",
+      "retrieved_from": "https://cdn.jsdelivr.net/gh/facias914/A-Simple-Detector-is-a-Strong-Tracker@main/assets/pipeline.png",
+      "width": 8326,
+      "height": 1870,
+      "verification": "README explicitly embeds assets/pipeline.png; complete PNG IEND; visually inspected; transparent background; Pillow decode verified",
+      "bytes": 1271084,
+      "delivery_note": "Resized for use as a web thumbnail; original source identified above."
+    }
+  ],
+  "additional_verified_reference": {
+    "paper": "Beyond Full Labels: Energy-Double-Guided Single-Point Prompt for Infrared Small Target Label Generation",
+    "paper_url": "https://arxiv.org/abs/2408.08191",
+    "official_html": "https://arxiv.org/html/2408.08191v1",
+    "repository": "https://github.com/xdFai/EDGSP",
+    "repository_readme": "https://cdn.jsdelivr.net/gh/xdFai/EDGSP@main/README.md",
+    "framework_image": "https://github.com/xdFai/EDGSP/blob/main/Figure/Fig02.png",
+    "note": "Repository README successfully retrieved and explicitly identifies Figure/Fig02.png as Structure; framework image not downloaded; no asset included."
+  }
+}
