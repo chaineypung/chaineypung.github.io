@@ -10,14 +10,6 @@
     nav.classList.remove('is-open');
     menu.setAttribute('aria-expanded', 'false');
   }));
-  document.querySelectorAll('[data-filter-year]').forEach(button => {
-    button.addEventListener('click', () => {
-      const year = button.dataset.filterYear;
-      document.querySelectorAll('[data-filter-year]').forEach(b => b.setAttribute('aria-pressed', String(b === button)));
-      document.querySelectorAll('.news-list [data-year]').forEach(row => { row.hidden = year !== 'all' && row.dataset.year !== year; });
-      document.querySelector('.news-feed').scrollTop = 0;
-    });
-  });
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {

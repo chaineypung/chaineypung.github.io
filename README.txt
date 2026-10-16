@@ -6,7 +6,7 @@ Open index.html to preview the homepage. No installation or build is required.
 CONTENTS
 index.html                  Homepage content
 assets/style.css            Desktop and mobile styles
-assets/main.js              Mobile navigation and News year filters
+assets/main.js              Mobile navigation and section highlighting
 assets/images/              Public GitHub portrait and real paper thumbnails
 evita/                      Original project directory, preserved byte for byte
 .nojekyll                   Serve the website directly with GitHub Pages
@@ -24,13 +24,17 @@ PUBLISH TO THE EXISTING REPOSITORY
 5. After the deployment completes, visit https://chaineypung.github.io/.
 
 UPDATE CONTENT
+News from 2024 to 2026 is fully visible, without filters or an internal scroll box.
+Competition records from 2020 to 2026 are expanded by year.
+The Google Scholar link is listed in the sidebar.
 Edit index.html to update the biography, publications, News, and experiences.
 For a new News item, add an li with data-year="YYYY" inside .news-list.
 Use a time element with datetime="YYYY-MM-DD" and visible text YYYY.MM.DD.
 Keep paper thumbnails in assets/images/ and use descriptive alt text.
 
 CONTENT NOTES
-The homepage is in English. Research and project descriptions use Multimodal.
+The homepage is in English. Research interests cover multimodal model design
+and video generation.
 Official paper titles keep the wording of their published records.
 News dates are shown to the day. Known exact publication/project dates were
 retained. For entries with incomplete evidence, day-level dates were added
